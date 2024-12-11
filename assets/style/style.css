@@ -1,0 +1,258 @@
+/* Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+    background-color: #f7f7f7;
+    height: 100vh; /* Garante que o body ocupe a altura total da tela */
+}
+
+/* Slider */
+.slider {
+    display: flex;
+    width: 300%; /* 100% para cada slide */
+    height: 100vh;
+    transition: transform 1s ease-in-out;
+}
+
+.slide {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #fff;
+    position: relative;
+}
+
+/* Overlay para escurecer o fundo dos slides */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Conteúdo do slide */
+.slide-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Cores dos slides */
+.slide:nth-child(1) {
+    background: #98d4a1;
+}
+
+.slide:nth-child(2) {
+    background: #98d4a1;
+}
+
+.slide:nth-child(3) {
+    background: #4caf50;
+}
+
+/* Navegação */
+nav {
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+}
+
+nav h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* Cards e Conteúdo */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.card {
+    width: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin: 10px;
+    color: #333;
+}
+
+.card p {
+    font-size: 1rem;
+    margin: 10px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Formulário de Avaliação */
+#evaluation-form {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+#evaluation-form .form-group {
+    margin-bottom: 15px;
+}
+
+#evaluation-form label {
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#evaluation-form input,
+#evaluation-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+#evaluation-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#evaluation-form button:hover {
+    background-color: #45a049;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    /* Ajustes para nav */
+    nav h1 {
+        font-size: 1.2rem;
+    }
+
+    /* Ajuste de texto nos slides */
+    .slide-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+
+    /* Cards em coluna e ajustes de espaçamento */
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    /* Ajustes no formulário */
+    #evaluation-form {
+        padding: 15px;
+        margin: 15px;
+    }
+
+    #evaluation-form input,
+    #evaluation-form select {
+        font-size: 0.9rem;
+    }
+
+    #evaluation-form button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+    /* Ajustes nos slides */
+    .slide-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+
+    /* Ajuste nos cards */
+    .card h3 {
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    .card-container {
+        padding: 0 5px;
+    }
+
+    .card {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    /* Ajuste nos botões */
+    #evaluation-form button {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}
